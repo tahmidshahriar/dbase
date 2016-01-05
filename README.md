@@ -1,39 +1,24 @@
-Flask on OpenShift
-==================
+# A basic Flask quickstart 
+*With support for serving easy APIs and static content*
 
-This git repository helps you get up and running quickly w/ a Flask installation
-on OpenShift.
+[![Build Status](http://img.shields.io/travis/ryanj/flask-base.svg)](https://travis-ci.org/ryanj/flask-base) [![Deploy](https://img.shields.io/badge/Launch_on-OpenShift-brightgreen.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=python-2&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Fflask-base.git&name=flask)
 
+[![Launch on OpenShift](http://launch-shifter.rhcloud.com/button.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=python-2.7&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Fflask-base.git&name=flask)
 
-Running on OpenShift
-----------------------------
+To deploy a clone of this application using the [`rhc` command line tool](http://rubygems.org/gems/rhc):
 
-Create an account at https://www.openshift.com
-
-Create a python application
-
-    rhc app create flask python-2.6
-
-Add this upstream flask repo
-
-    cd flask
-    git remote add upstream -m master https://github.com/openshift/flask-example.git
-    git pull -s recursive -X theirs upstream master
+    rhc app create flask python-2.7 --from-code=https://github.com/ryanj/flask-base.git
     
-Then push the repo upstream
+Or [link to a web-based clone+deploy](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=python-2.7&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Fflask-base.git) on [OpenShift Online](http://OpenShift.com) or on [your own OpenShift cloud](http://openshift.github.io): 
 
-    git push
+    https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=python-2.7&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Fflask-base.git
 
-That's it, you can now checkout your application at:
+## Local server
+Start a local webserver by running:
 
-    http://flask-$yournamespace.rhcloud.com
+```bash
+python app.py
+```
 
-------------------------------
-
-To get more log messages in your OpenShift logs please add the following line to your code
-
-    app.config['PROPAGATE_EXCEPTIONS'] = True
-
-To read more about logging in Flask please see this email
-
-http://librelist.com/browser//flask/2012/1/27/catching-exceptions-from-flask/
+## License
+This code is dedicated to the public domain to the maximum extent permitted by applicable law, pursuant to CC0 (http://creativecommons.org/publicdomain/zero/1.0/)
