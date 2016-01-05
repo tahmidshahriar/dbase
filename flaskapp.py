@@ -33,7 +33,7 @@ def index():
             return render_template('./app.html', form=form, myList = myList)
         except:
             print "Failed"
-            return "hello"
+            return "OMG"
             return render_template('./app.html', form=form, myList = [])
 
 
