@@ -1,4 +1,5 @@
 import os
+from forms import TodoForm
 from datetime import datetime
 from flask import Flask, request, flash, url_for, redirect, \
      render_template, abort, send_from_directory
@@ -8,6 +9,7 @@ app.config.from_pyfile('flaskapp.cfg')
 
 @app.route('/')
 def index():
+    form = TodoForm()
     return render_template('index.html')
 
 
