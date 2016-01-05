@@ -26,6 +26,7 @@ def index():
     else:
         try:
             conn=pymongo.Connection(os.environ['OPENSHIFT_MONGODB_DB_URL'])
+            return "Hi"
             db = conn.test
             todo = db.todo
             myList = list(todo.find())
