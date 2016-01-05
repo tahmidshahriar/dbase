@@ -10,7 +10,7 @@ app.config.from_pyfile('flaskapp.cfg')
 @app.route('/')
 def index():
     form = TodoForm()
-        if request.method== 'POST':
+    if request.method== 'POST':
         try:
             if (request.form['todo'] != ""):
                 conn=pymongo.MongoClient()
