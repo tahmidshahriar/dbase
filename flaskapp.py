@@ -13,7 +13,7 @@ def hello():
     form = DataForm()
     if request.method== 'POST':
         try:
-            conn=pymongo.MongoClient()
+            conn=pymongo.MongoClient(os.environ['OPENSHIFT_MONGODB_DB_URL'])
             db = conn.test
             information = db.information
             data = {}
@@ -37,7 +37,7 @@ def hello():
             return redirect('/')
     else:
         try:
-            conn=pymongo.MongoClient()
+            conn=pymongo.MongoClient(os.environ['OPENSHIFT_MONGODB_DB_URL'])
             db = conn.test
             information = db.information
             myList = list(information.find())
@@ -51,7 +51,7 @@ def hello():
 def delete():
     try:
         print request.form['program']
-        conn=pymongo.MongoClient()
+        conn=pymongo.MongoClient(os.environ['OPENSHIFT_MONGODB_DB_URL'])
         db = conn.test
         information = db.information
         data = {}
