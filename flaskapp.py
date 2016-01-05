@@ -26,7 +26,7 @@ def index():
             return redirect('/')
     else:
         try:
-            conn = pymongo.Connection(os.environ['OPENSHIFT_MONGODB_DB_URL'])
+            conn = pymongo.MongoClient(os.environ['OPENSHIFT_MONGODB_DB_URL'])
             return "Hi"
             db = conn.test
             todo = db.todo
@@ -34,7 +34,7 @@ def index():
             return render_template('./app.html', form=form, myList = myList)
         except:
             print "Failed"
-            conn = pymongo.Connection(os.environ['OPENSHIFT_MONGODB_DB_URL'])
+            conn = pymongo.MongoClient(os.environ['OPENSHIFT_MONGODB_DB_URL'])
             return "OMG"
             return render_template('./app.html', form=form, myList = [])
 
