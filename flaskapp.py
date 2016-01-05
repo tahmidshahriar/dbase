@@ -25,7 +25,7 @@ def index():
             return redirect('/')
     else:
         try:
-            conn=pymongo.Connection(os.environ['OPENSHIFT_MONGODB_DB_URL'])
+            conn=pymongo.Connection("mongodb://admin:8lIcmj3N76ZC@127.7.210.130:27017/")
             return "Hi"
             db = conn.test
             todo = db.todo
