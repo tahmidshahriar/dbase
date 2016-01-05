@@ -10,7 +10,7 @@ app.config.from_pyfile('flaskapp.cfg')
 @app.route('/')
 def index():
     form = TodoForm()
-    return render_template('app.html', form=form, myList = []))
+    return render_template('app.html', form=form, myList = [])
 
 
 if __name__ == '__main__':
