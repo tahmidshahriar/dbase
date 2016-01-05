@@ -6,6 +6,27 @@
   </head>
 
   <body>
-hello
+  <div class="containers">
+  
+  <div>
+  <form action="" method="post" name="form">
+      <p>
+          Bucket:<br>
+          {{ form.todo(size=80) }}<br>
+      </p>
+      <p><input type="submit" value="Add To Your Bucket"></p>
+  </form>
+
+  </div>
+
+          {% for post in myList %}
+            <div>
+            Bucket Item: {{post.todo}}
+            </div>
+            <div class="seperator"></div>   
+          {% endfor %}
+  </div>
+
+
   </body>
   </html>
