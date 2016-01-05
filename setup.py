@@ -6,5 +6,5 @@ setup(name='FlaskApp',
       author='Ryan Jarvinen',
       author_email='ryanj@redhat.com',
       url='http://www.python.org/sigs/distutils-sig/',
-     install_requires=['Flask>=0.10.1', 'pymongo'],
+     install_requires=['Flask==0.10.1', 'pymongo','wtforms==1.0.5', 'flask-wtf==0.9.3'],
      )
