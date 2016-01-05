@@ -26,6 +26,7 @@ def index():
     else:
         try:
             conn=pymongo.MongoClient()
+            return "hi"
             db = conn.test
             todo = db.todo
             myList = list(todo.find())
