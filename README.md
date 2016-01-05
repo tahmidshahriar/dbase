@@ -1,47 +1,39 @@
-openshift-mongo-flask-example
-=============================
+Flask on OpenShift
+==================
 
-This is the code to go along with the [OpenShift blog piece](https://www.openshift.com/blogs/rest-web-services-with-python-mongodb-and-spatial-data-in-the-cloud-part-2) on how to use Flask (python) with MongoDB to create a REST like web service with spatial data
-**Please note that this only works with Python-2.6 cartridge**
+This git repository helps you get up and running quickly w/ a Flask installation
+on OpenShift.
+
 
 Running on OpenShift
 ----------------------------
 
 Create an account at https://www.openshift.com
 
-Create a python application with MongoDB
+Create a python application
 
-    rhc app create pythonws python-2.6 mongodb-2 --from-code git://github.com/openshift-quickstart/openshift-mongo-flask-example.git
-    
-or you can do this
+    rhc app create flask python-2.6
 
-    rhc app create pythonws python-2.6 mongodb-2
-    cd pythonws
-    git remote add upstream -m master git://github.com/openshift-quickstart/openshift-mongo-flask-example.git
+Add this upstream flask repo
+
+    cd flask
+    git remote add upstream -m master https://github.com/openshift/flask-example.git
     git pull -s recursive -X theirs upstream master
+    
+Then push the repo upstream
+
     git push
-    
-To add the data to the MongoDB instance please follow the instructions on this blog:
-[Mongo Spatial on OpenShift](https://www.openshift.com/blogs/spatial-mongodb-in-openshift-be-the-next-foursquare-part-1)
 
-Now, ssh into the application.
+That's it, you can now checkout your application at:
 
-Add the data to a collection called parkpoints:
+    http://flask-$yournamespace.rhcloud.com
 
-    mongoimport -d pythonws -c parkpoints --type json --file $OPENSHIFT_REPO_DIR/parkcoord.json  -h $OPENSHIFT_MONGODB_DB_HOST  -u admin -p $OPENSHIFT_MONGODB_DB_PASSWORD --port $OPENSHIFT_MONGODB_DB_PORT
+------------------------------
 
-    
-Create the spatial index on the documents:
+To get more log messages in your OpenShift logs please add the following line to your code
 
-    mongo
-    use pythonws
-    db.parkpoints.ensureIndex( { pos : "2d" } );
+    app.config['PROPAGATE_EXCEPTIONS'] = True
 
-Once the data is imported you can now checkout your application at:
+To read more about logging in Flask please see this email
 
-    http://pythonws-$yournamespace.rhcloud.com/ws/parks
- 
-License
--------
-
-This code is dedicated to the public domain to the maximum extent permitted by applicable law, pursuant to CC0 (http://creativecommons.org/publicdomain/zero/1.0/)
+http://librelist.com/browser//flask/2012/1/27/catching-exceptions-from-flask/
