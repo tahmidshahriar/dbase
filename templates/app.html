@@ -1,32 +1,121 @@
-
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title> Bucket</title>    
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-  </head>
+<head>
+  <title> Database </title>    
+  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript">
+  var del = function(pr, el, da, ad, ph, ah, lo, c, f, s, l, es, no) {
+    data = {}
+    data['program'] = pr
+    data['eligibility'] = el
+    data['date'] = da
+    data['applicationDeadline'] = ad
+    data['programHyper'] = ph
+    data['applicationHyper'] = ah
+    data['login'] = lo
+    data['courses'] = c
+    data['faq'] = f
+    data['sat'] = s
+    data['lor'] = l
+    data['essay'] = es
+    data['note'] = no
+    $.ajax({
+      type: "POST",
+      url: '/delete',
+      data: data
+    }).done(function() {
+      window.location.href = "/";
+    });
+  }  
 
-  <body>
+  </script>
+
+</head>
+
+
+<body>
   <div class="containers">
-  
-  <div>
-  <form action="" method="post" name="form">
-      <p>
-          Bucket:<br>
-          {{ form.todo(size=80) }}<br>
-      </p>
-      <p><input type="submit" value="Add To Your Bucket"></p>
-  </form>
+    <div class="panel container-fluid row">
+      <div class="col-md-12">
+        <div id="sort-wrapper">
+        <input class="search" placeholder="Search" />
+
+          <table border="1">        
+            <thead>
+              <th class="sort" data-sort="program"><a> Program </a> </th>
+              <th class="sort" data-sort="eligibility"> <a> Eligibility </a></th>
+              <th class="sort" data-sort="date"><a> Date </a></th>
+              <th class="sort" data-sort="applicationDeadline"> <a> Application Deadline </a></th>
+              <th class="sort" data-sort="programHyperlink"><a> Program Hyperlink </a></th>
+              <th class="sort" data-sort="applicationHyperlink"><a> Application Hyperlink</a></th>
+              <th class="sort" data-sort="login"><a> Login </a></th>
+              <th class="sort" data-sort="courses"><a>Courses</a></th>
+              <th class="sort" data-sort="faq"><a>FAQ</a></th>
+              <th class="sort" data-sort="sat"><a>SAT</a></th>
+              <th class="sort" data-sort="lor"><a>Letter of Recommendation</a></th>
+              <th class="sort" data-sort="essay"><a>Essay</a></th>
+              <th class="sort" data-sort="note"><a>Note</a></th>
+            </thead>
+            <tbody class="list">
+              {% for post in myList %}
+              <tr>
+                <td class="program"> {{ post.program }}</td>
+                <td class="eligibility"> {{ post.eligibility }}</td>
+                <td class="date"> {{ post.date }}</td>
+                <td class="applicationDeadline"> {{ post.applicationDeadline }}</td>
+                <td class="programHyperlink"> {{ post.programHyper }}</td>
+                <td class="applicationHyperlink"> {{ post.applicationHyper }}</td>
+                <td class="login"> {{ post.login }}</td>
+                <td class="courses"> {{ post.courses}}</td>
+                <td class="faq"> {{ post.faq }}</td>
+                <td class="sat"> {{ post.sat }}</td>
+                <td class="lor"> {{ post.lor }}</td>
+                <td class="essay"> {{ post.essay }}</td>
+                <td class="note"> {{ post.note }}</td>
+                <td><input type="submit" value="Delete" onclick="del( '{{post.program}}', '{{ post.eligibility }}', '{{ post.date }}', '{{ post.applicationDeadline }}', '{{ post.programHyper }}', '{{ post.applicationHyper }}', '{{ post.login }}', '{{ post.courses }}', '{{ post.faq }}', '{{ post.sat }}', '{{ post.lor }}', '{{ post.essay }}', '{{ post.note }}' )"></td>
+
+              </tr>
+              <div class="seperator"></div>   
+              {% endfor %}
+            </tbody>
+
+            <tr>
+              <form action="" method="post" name="form">
+                <td> {{ form.program }} </td>
+                <td> {{ form.eligibility}} </td>
+                <td> {{ form.date }}</td>
+                <td> {{ form.applicationDeadline }}</td>
+                <td> {{ form.programHyper }}</td>
+                <td> {{ form.applicationHyper }}</td>
+                <td> {{ form.login }}</td>
+                <td> {{ form.courses }}</td>
+                <td> {{ form.faq }}</td>
+                <td> {{ form.sat }}</td>
+                <td> {{ form.lor }}</td>
+                <td> {{ form.essay }}</td>
+                <td> {{ form.note }}</td>
+                <td><input type="submit" value="Add"></td>
+
+              </form>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+    <script type="text/javascript">
+      var options = {
+        valueNames: [ 'program', 'eligibility', 'date', 'applicationDeadline',  'programHyperlink', 'applicationHyperlink', 'login', 'courses', 'faq' , 'sat', 'lor', 'essay', 'note']
+      };
+      var contactList = new List('sort-wrapper', options);
+    </script>
 
   </div>
-
-          {% for post in myList %}
-            <div>
-            Bucket Item: {{post.todo}}
-            </div>
-            <div class="seperator"></div>   
-          {% endfor %}
-  </div>
-
-
-  </body>
-  </html>
+</body>
+</html>
