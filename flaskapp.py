@@ -1,5 +1,7 @@
 import os
 from datetime import datetime
+from flask.ext.wtf import Form
+
 from flask import Flask, request, flash, url_for, redirect, \
      render_template, abort, send_from_directory
 
