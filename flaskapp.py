@@ -30,8 +30,7 @@ def start():
                 return redirect('/database')
             else:
                 myList = list(log.find())
-                print myList
-                if len(myList < 1):
+                if len(myList) < 1:
                     if (request.form['username'] == "TAHMID"):
                         session['username'] = "admin"
                         return redirect('/database')
