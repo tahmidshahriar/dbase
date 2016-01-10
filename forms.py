@@ -14,3 +14,16 @@ class DataForm(Form):
     lor = TextField('lor')
     essay = TextField('essay')
     note = TextField('note')
+
+
+
+class LoginForm(Form):
+    username = TextField('username')
+    password = PasswordField('password')
+
+
+class ChangeLoginForm(Form):
+    username = TextField('username')
+    password = PasswordField('password')
+    newPassword = PasswordField('newPassword')
+    newPassword2 = PasswordField('newPassword2')
