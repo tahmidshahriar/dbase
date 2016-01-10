@@ -7,9 +7,15 @@ import pymongo
 
 app = Flask(__name__)
 app.config.from_pyfile('flaskapp.cfg')
-session['username'] = None
+
 @app.route("/", methods=['GET', 'POST'])
 def start():
+    try:
+        a = session['username']):
+    except:
+        session['username'] = None
+        
+
     if (session['username'] != None):
         return redirect('/database')
     form = LoginForm()
@@ -39,6 +45,12 @@ def start():
 
 @app.route("/changePassword-4e-259-16", methods=['GET', 'POST'])
 def change():
+    try:
+        a = session['username']):
+    except:
+        session['username'] = None
+        
+
     if (session['username'] != 'admin'):
         return redirect('/')
     form = ChangeLoginForm()
@@ -71,6 +83,12 @@ def change():
 
 @app.route("/add-first-time-4e-259-16", methods=['GET'])
 def add():
+    try:
+        a = session['username']):
+    except:
+        session['username'] = None
+        
+
     if (session['username'] != 'admin'):
         return redirect('/')
     else:
@@ -96,6 +114,12 @@ def add():
 
 @app.route("/signout", methods=['GET', 'POST'])
 def signout():
+    try:
+        a = session['username']):
+    except:
+        session['username'] = None
+        
+
     if (session['username']):
         session['username'] = None
     return redirect('/')
@@ -104,6 +128,12 @@ def signout():
 
 @app.route("/database", methods=['GET', 'POST'])
 def hello():
+    try:
+        a = session['username']):
+    except:
+        session['username'] = None
+        
+
     if (session['username'] != None):
         form = DataForm()
         if request.method == 'POST' and session['username'] == 'admin':
@@ -146,6 +176,12 @@ def hello():
 
 @app.route("/delete", methods=['POST'])
 def delete():
+    try:
+        a = session['username']):
+    except:
+        session['username'] = None
+        
+
     if session['username'] == 'admin':
         try:
             conn=pymongo.MongoClient(os.environ['OPENSHIFT_MONGODB_DB_URL'])
