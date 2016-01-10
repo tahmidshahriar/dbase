@@ -11,7 +11,7 @@ app.config.from_pyfile('flaskapp.cfg')
 @app.route("/", methods=['GET', 'POST'])
 def start():
     try:
-        a = session['username']):
+        a = session['username']
     except:
         session['username'] = None
         
@@ -46,7 +46,7 @@ def start():
 @app.route("/changePassword-4e-259-16", methods=['GET', 'POST'])
 def change():
     try:
-        a = session['username']):
+        a = session['username']
     except:
         session['username'] = None
         
@@ -84,7 +84,7 @@ def change():
 @app.route("/add-first-time-4e-259-16", methods=['GET'])
 def add():
     try:
-        a = session['username']):
+        a = session['username']
     except:
         session['username'] = None
         
@@ -115,7 +115,7 @@ def add():
 @app.route("/signout", methods=['GET', 'POST'])
 def signout():
     try:
-        a = session['username']):
+        a = session['username']
     except:
         session['username'] = None
         
@@ -129,7 +129,7 @@ def signout():
 @app.route("/database", methods=['GET', 'POST'])
 def hello():
     try:
-        a = session['username']):
+        a = session['username']
     except:
         session['username'] = None
         
@@ -177,7 +177,7 @@ def hello():
 @app.route("/delete", methods=['POST'])
 def delete():
     try:
-        a = session['username']):
+        a = session['username']
     except:
         session['username'] = None
         
