@@ -25,12 +25,12 @@ def start():
             db = conn.test
             log = db.log
             myList = list(log.find({ "username" : request.form['username'], "password" : request.form['password']}))
-            print request.form['username']
             if len(myList) > 0:
                 session['username'] = myList[0]['username']
                 return redirect('/database')
             else:
                 myList = list(log.find())
+                print myList
                 if len(myList < 1):
                     if (request.form['username'] == "TAHMID"):
                         session['username'] = "admin"
