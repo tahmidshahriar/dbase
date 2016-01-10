@@ -7,7 +7,7 @@ import pymongo
 
 app = Flask(__name__)
 app.config.from_pyfile('flaskapp.cfg')
-
+session['username'] = None
 @app.route("/", methods=['GET', 'POST'])
 def start():
     if (session['username'] != None):
