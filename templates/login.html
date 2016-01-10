@@ -1,23 +1,27 @@
 
 <html lang="en">
-  <head>
-    <title> Database: Login </title>    
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-  </head>
+<head>
+  <title> Database: Login </title>    
+  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-  <body>
-  <div class="containers">
-  
-  <div>
-  <form action="" method="post" name="form">
-      <p> 
+<body>
+  <div class="panel container-fluid row">
+    <div class="separator"></div>
+    <div class="col-md-5"></div>
+    <div class="col-md-2"> 
+      <form class="form-signin text-center" action="" method="post" name="form">
+        <p> 
           username :<br> {{ form.username}} <br>
           password :<br> {{ form.password}} <br>
-      </p>
-      <p><input type="submit" value="Login"></p>
-  </form>
+        </p>
+        <p><input type="submit" value="Login"></p>
+      </form>
+    </div>
+    <div class="col-md-5"> 
+    </div>
+  </div>
 
 
-
-  </body>
-  </html>
+</body>
+</html>
