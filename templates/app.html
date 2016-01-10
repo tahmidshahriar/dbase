@@ -336,7 +336,7 @@ $(document).ready(function() {
       <div class="separator"></div>
 
       <div class="col-md-12">
-          <table id="example" class="display" border="1">        
+          <table id="example" class="display" border="1" style="table-layout: fixed; width: 2200px">        
             <thead>
               <tr>
               <th></th>
@@ -384,8 +384,8 @@ $(document).ready(function() {
                 <td class="eligibility"> {{ post.eligibility }}</td>
                 <td class="date"> {{ post.date }}</td>
                 <td class="applicationDeadline"> {{ post.applicationDeadline }}</td>
-                <td class="programHyperlink"> {{ post.programHyper }}</td>
-                <td class="applicationHyperlink"> {{ post.applicationHyper }}</td>
+                <td class="programHyperlink"> <a href="{{ post.programHyper }}"> {{ post.programHyper }} <a> </td>
+                <td class="applicationHyperlink"> <a href="{{ post.programHyper }}"> {{ post.applicationHyper }} <a> </td>
                 <td class="login"> {{ post.login }}</td>
                 <td class="courses"> {{ post.courses}}</td>
                 <td class="faq"> {{ post.faq }}</td>
