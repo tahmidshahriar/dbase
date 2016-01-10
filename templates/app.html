@@ -214,10 +214,6 @@ var exp = function(){
   console.log("HERE")
 
       $('<table>')
-          .append(
-            $("#example").DataTable().$('#the').clone()
-         )
-
          .append(
             $("#example").DataTable().$('tr').clone()
          )
@@ -240,20 +236,37 @@ $(document).ready(function() {
     } );
  
     // DataTable
+       if (("{{session.username}}") == "admin") {
     var table = $('#example').DataTable(
         {
           // "paging" : false,
           "sDom": '<"wrapper"f l i t> <"bottom"> p',
           "columnDefs": [
               {
-                  "targets": [ 0 ],
+                  "targets": 0,
                   "searchable": false,
-                  "sortable" : false
+                  "sortable" : false,
               }
           ]
         }
       );
- 
+    }
+    else {
+      var table = $('#example').DataTable(
+        {
+          // "paging" : false,
+          "sDom": '<"wrapper"f l i t> <"bottom"> p',
+          "columnDefs": [
+              {
+                  "targets": 0,
+                  "searchable": false,
+                  "sortable" : false,
+                  "visible" : false,
+              }
+          ]
+        }
+      );
+    }
     // Apply the search
     table.columns().every( function () {
         var that = this;
