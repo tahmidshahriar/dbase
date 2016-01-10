@@ -42,7 +42,7 @@ def start():
         return render_template('./login.html', form=form, session = session)
 
 
-@app.route("/changePassword-4e-259-16", methods=['GET', 'POST'])
+@app.route("/changePassword", methods=['GET', 'POST'])
 def change():
     try:
         a = session['username']
