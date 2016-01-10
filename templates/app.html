@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<!--
+- Decrease column widths of Eligibility, Application Deadline 
+- Make login screen centered 
+- Font: try Palatino, size 11
+- For admin version, could you put Add/Delete column first
+- make hyperlink boxes wrap text 
+- make links hyperlinks 
+- Edit button next to delete button for each entry, in order to edit info within existing entry
+-->
 <html lang="en">
 <head>
   <title> Database </title>    
@@ -7,7 +16,7 @@
   <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
-
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
   <style> 
 
     .dataTables_filter {
@@ -37,6 +46,7 @@
     tfoot {
         display: table-header-group;
     }
+
   </style>
  
 
@@ -291,7 +301,7 @@ $(document).ready(function() {
 </head>
 
 
-<body>
+<body style="font-size: 11px !important; font-family: Palatino !important;">
   <div class="containers">
 
 
@@ -329,6 +339,7 @@ $(document).ready(function() {
           <table id="example" class="display" border="1">        
             <thead>
               <tr>
+              <th></th>
               <th><a> Program </a> </th>
               <th> <a> Eligibility </a></th>
               <th><a> Date </a></th>
@@ -342,12 +353,13 @@ $(document).ready(function() {
               <th><a>Letter of Recommendation</a></th>
               <th><a>Essay</a></th>
               <th><a>Note</a></th>
-              <th><a>Delete</a></th>
+
               </tr>
             </thead>
 
         <tfoot>
             <tr>
+              <th></th>
               <th><a> Program </a> </th>
               <th> <a> Eligibility </a></th>
               <th><a> Date </a></th>
@@ -361,14 +373,13 @@ $(document).ready(function() {
               <th><a>Letter of Recommendation</a></th>
               <th><a>Essay</a></th>
               <th><a>Note</a></th>
-              <th class="hidden"><a>Delete</a></th>
             </tr>
         </tfoot>
 
             <tbody class="list">
               {% for post in myList %}
               <tr>
-
+                <td> <input type="submit" value="Delete" onclick="del('{{session.username}}', '{{post.program}}', '{{ post.eligibility }}', '{{ post.date }}', '{{ post.applicationDeadline }}', '{{ post.programHyper }}', '{{ post.applicationHyper }}', '{{ post.login }}', '{{ post.courses }}', '{{ post.faq }}', '{{ post.sat }}', '{{ post.lor }}', '{{ post.essay }}', '{{ post.note }}' )"> </td>
                 <td class="program"> {{ post.program }}</td>
                 <td class="eligibility"> {{ post.eligibility }}</td>
                 <td class="date"> {{ post.date }}</td>
@@ -382,8 +393,6 @@ $(document).ready(function() {
                 <td class="lor"> {{ post.lor }}</td>
                 <td class="essay"> {{ post.essay }}</td>
                 <td class="note"> {{ post.note }}</td>
-
-                <td> <input type="submit" value="Delete" onclick="del('{{session.username}}', '{{post.program}}', '{{ post.eligibility }}', '{{ post.date }}', '{{ post.applicationDeadline }}', '{{ post.programHyper }}', '{{ post.applicationHyper }}', '{{ post.login }}', '{{ post.courses }}', '{{ post.faq }}', '{{ post.sat }}', '{{ post.lor }}', '{{ post.essay }}', '{{ post.note }}' )"> </td>
               </tr>
               <div class="seperator"></div>   
               {% endfor %}
@@ -392,6 +401,7 @@ $(document).ready(function() {
               {% if session['username'] == 'admin' %}
             <tr>
               <form action="" method="post" name="form">
+                <td><input type="submit" value="Add"></td>
                 <td> {{ form.program }} </td>
                 <td> {{ form.eligibility}} </td>
                 <td> {{ form.date }}</td>
@@ -405,7 +415,6 @@ $(document).ready(function() {
                 <td> {{ form.lor }}</td>
                 <td> {{ form.essay }}</td>
                 <td> {{ form.note }}</td>
-                <td><input type="submit" value="Add"></td>
 
               </form>
             </tr> 
