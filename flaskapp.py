@@ -156,7 +156,6 @@ def hello():
                 data['top'] = request.form['top']
                 data['collegeCredit'] = request.form['collegeCredit']
                 data['courses'] = request.form['courses']
-                data['lor'] = request.form['lor']
                 data['note'] = request.form['note']
                 information.insert(data)
                 return redirect('/database')
@@ -206,7 +205,6 @@ def delete():
             data['top'] = request.form['top']
             data['collegeCredit'] = request.form['collegeCredit']
             data['courses'] = request.form['courses']
-            data['lor'] = request.form['lor']
             data['note'] = request.form['note']
             information.delete_many(data)
             print "HERE"
