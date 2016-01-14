@@ -280,22 +280,26 @@ $(document).ready(function() {
 
 
   <script type="text/javascript">
-  var del = function(u, pr, el, da, ad, ph, ah, lo, c, f, s, l, es, no) {
+  var del = function(u, prog, cat, loc, desc, elig, date, dur, appD, essay, phyper, ahyper, rhyper, top, credit, courses, lor, note) {
     if (u == "admin") {
       data = {}
-      data['program'] = pr
-      data['eligibility'] = el
-      data['date'] = da
-      data['applicationDeadline'] = ad
-      data['programHyper'] = ph
-      data['applicationHyper'] = ah
-      data['login'] = lo
-      data['courses'] = c
-      data['faq'] = f
-      data['sat'] = s
-      data['lor'] = l
-      data['essay'] = es
-      data['note'] = no
+      data['program'] = prog
+      data['category'] = cat
+      data['location'] = loc
+      data['description'] = desc
+      data['eligibility'] = elig
+      data['date'] = date
+      data['duration'] = dur
+      data['applicationDeadline'] = appD
+      data['essay'] = essay
+      data['programHyper'] = phyper
+      data['applicationHyper'] = ahyper
+      data['reviewHyper'] = rhyper
+      data['top'] = top
+      data['collegeCredit'] = credit
+      data['courses'] = courses
+      data['lor'] = lor
+      data['note'] = note
       $.ajax({
         type: "POST",
         url: '/delete',
@@ -342,6 +346,7 @@ $(document).ready(function() {
          </div>
       </dic>
       
+      
 
       <div class="separator"></div>
 
@@ -351,17 +356,20 @@ $(document).ready(function() {
               <tr>
               <th></th>
               <th><a> Program </a> </th>
+              <th><a> Category </a> </th>
+              <th><a> Location </a> </th>
+              <th><a> Description </a> </th>
               <th> <a> Eligibility </a></th>
               <th><a> Date </a></th>
+              <th><a> Duration </a> </th>
               <th> <a> Application Deadline </a></th>
+              <th><a>Essay</a></th>              
               <th><a> Program Hyperlink </a></th>
               <th><a> Application Hyperlink</a></th>
-              <th><a> Login </a></th>
-              <th><a>Courses</a></th>
-              <th><a>FAQ</a></th>
-              <th><a>SAT</a></th>
-              <th><a>Letter of Recommendation</a></th>
-              <th><a>Essay</a></th>
+              <th><a> Review Hyperlink</a></th>
+              <th><a> Top-Ranked School? </a></th>
+              <th><a> Offers College Credit? </a></th>
+              <th><a>Courses Available</a></th>
               <th><a>Note</a></th>
 
               </tr>
@@ -371,17 +379,20 @@ $(document).ready(function() {
             <tr>
               <th></th>
               <th><a> Program </a> </th>
+              <th><a> Category </a> </th>
+              <th><a> Location </a> </th>
+              <th><a> Description </a> </th>
               <th> <a> Eligibility </a></th>
               <th><a> Date </a></th>
-              <th> <a> Application Deadline </a></th>
+              <th><a> Duration </a> </th>
+              <th><a> Application Deadline </a></th>
+              <th><a>Essay</a></th>              
               <th><a> Program Hyperlink </a></th>
               <th><a> Application Hyperlink</a></th>
-              <th><a> Login </a></th>
-              <th><a>Courses</a></th>
-              <th><a>FAQ</a></th>
-              <th><a>SAT</a></th>
-              <th><a>Letter of Recommendation</a></th>
-              <th><a>Essay</a></th>
+              <th><a> Review Hyperlink</a></th>
+              <th><a> Top-Ranked School? </a></th>
+              <th><a> Offers College Credit? </a></th>
+              <th><a>Courses Available</a></th>
               <th><a>Note</a></th>
             </tr>
         </tfoot>
@@ -389,19 +400,22 @@ $(document).ready(function() {
             <tbody class="list">
               {% for post in myList %}
               <tr>
-                <td> <input type="submit" value="Delete" onclick="del('{{session.username}}', '{{post.program}}', '{{ post.eligibility }}', '{{ post.date }}', '{{ post.applicationDeadline }}', '{{ post.programHyper }}', '{{ post.applicationHyper }}', '{{ post.login }}', '{{ post.courses }}', '{{ post.faq }}', '{{ post.sat }}', '{{ post.lor }}', '{{ post.essay }}', '{{ post.note }}' )"> </td>
+                <td> <input type="submit" value="Delete" onclick="del('{{session.username}}', '{{post.program}}', '{{post.category}}', '{{post.description}}', '{{post.eligibility}}', '{{post.date}}', '{{post.duration}}', '{{post.applicationDeadline}}', '{{post.essay}}', '{{post.programHyperlink}}', '{{post.applicationHyper}}', '{{post.reviewHyper}}', '{{post.top}}', '{{post.collegeCredit}}', '{{post.courses}}', '{{post.note}}')"> </td>
                 <td class="program"> {{ post.program }}</td>
+                <td class="category"> {{ post.category }}</td>
+                <td class="location"> {{ post.location }}</td>
+                <td class="description"> {{ post.description }}</td>
                 <td class="eligibility"> {{ post.eligibility }}</td>
                 <td class="date"> {{ post.date }}</td>
+                <td class="duration"> {{ post.duration }}</td>
                 <td class="applicationDeadline"> {{ post.applicationDeadline }}</td>
-                <td class="programHyperlink"> <a href="{{ post.programHyper }}"> {{ post.programHyper }} <a> </td>
-                <td class="applicationHyperlink"> <a href="{{ post.programHyper }}"> {{ post.applicationHyper }} <a> </td>
-                <td class="login"> {{ post.login }}</td>
-                <td class="courses"> {{ post.courses}}</td>
-                <td class="faq"> {{ post.faq }}</td>
-                <td class="sat"> {{ post.sat }}</td>
-                <td class="lor"> {{ post.lor }}</td>
                 <td class="essay"> {{ post.essay }}</td>
+                <td class="programHyper"> <a href="{{ post.programHyper }}"> {{ post.programHyper }} <a> </td>
+                <td class="applicationHyper"> <a href="{{ post.applicationHyper }}"> {{ post.applicationHyper }} <a> </td>
+                <td class="reviewHyper"> <a href="{{ post.reviewHyper }}"> {{ post.reviewHyper }} <a> </td>
+                <td class="top"> {{ post.top }}</td>
+                <td class="collegeCredit"> {{ post.collegeCredit }}</td>
+                <td class="courses"> {{ post.courses}}</td>
                 <td class="note"> {{ post.note }}</td>
               </tr>
               <div class="seperator"></div>   
@@ -412,18 +426,22 @@ $(document).ready(function() {
             <tr>
               <form action="" method="post" name="form">
                 <td><input type="submit" value="Add"></td>
-                <td> {{ form.program }} </td>
-                <td> {{ form.eligibility}} </td>
+                
+                <td> {{ form.program }}</td>
+                <td> {{ form.category }}</td>
+                <td> {{ form.location }}</td>
+                <td> {{ form.description }}</td>
+                <td> {{ form.eligibility }}</td>
                 <td> {{ form.date }}</td>
+                <td> {{ form.duration }}</td>
                 <td> {{ form.applicationDeadline }}</td>
-                <td> {{ form.programHyper }}</td>
-                <td> {{ form.applicationHyper }}</td>
-                <td> {{ form.login }}</td>
-                <td> {{ form.courses }}</td>
-                <td> {{ form.faq }}</td>
-                <td> {{ form.sat }}</td>
-                <td> {{ form.lor }}</td>
                 <td> {{ form.essay }}</td>
+                <td> {{ form.programHyper }} <a> </td>
+                <td> {{ form.applicationHyper }} <a> </td>
+                <td> {{ form.reviewHyper }} <a> </td>
+                <td> {{ form.top }}</td>
+                <td> {{ form.collegeCredit }}</td>
+                <td> {{ form.courses}}</td>
                 <td> {{ form.note }}</td>
 
               </form>

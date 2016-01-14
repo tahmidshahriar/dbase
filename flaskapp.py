@@ -142,17 +142,21 @@ def hello():
                 information = db.information
                 data = {}
                 data['program'] = request.form['program']
+                data['category'] = request.form['category']
+                data['location'] = request.form['location']
+                data['description'] = request.form['description']
                 data['eligibility'] = request.form['eligibility']
                 data['date'] = request.form['date']
+                data['duration'] = request.form['duration']
                 data['applicationDeadline'] = request.form['applicationDeadline']
+                data['essay'] = request.form['essay']
                 data['programHyper'] = request.form['programHyper']
                 data['applicationHyper'] = request.form['applicationHyper']
-                data['login'] = request.form['login']
+                data['reviewHyper'] = request.form['reviewHyper']
+                data['top'] = request.form['top']
+                data['collegeCredit'] = request.form['collegeCredit']
                 data['courses'] = request.form['courses']
-                data['faq'] = request.form['faq']
-                data['sat'] = request.form['sat']
                 data['lor'] = request.form['lor']
-                data['essay'] = request.form['essay']
                 data['note'] = request.form['note']
                 information.insert(data)
                 return redirect('/database')
@@ -188,17 +192,21 @@ def delete():
             information = db.information
             data = {}
             data['program'] = request.form['program']
+            data['category'] = request.form['category']
+            data['location'] = request.form['location']
+            data['description'] = request.form['description']
             data['eligibility'] = request.form['eligibility']
             data['date'] = request.form['date']
+            data['duration'] = request.form['duration']
             data['applicationDeadline'] = request.form['applicationDeadline']
+            data['essay'] = request.form['essay']
             data['programHyper'] = request.form['programHyper']
             data['applicationHyper'] = request.form['applicationHyper']
-            data['login'] = request.form['login']
+            data['reviewHyper'] = request.form['reviewHyper']
+            data['top'] = request.form['top']
+            data['collegeCredit'] = request.form['collegeCredit']
             data['courses'] = request.form['courses']
-            data['faq'] = request.form['faq']
-            data['sat'] = request.form['sat']
             data['lor'] = request.form['lor']
-            data['essay'] = request.form['essay']
             data['note'] = request.form['note']
             information.delete_many(data)
             print "HERE"
